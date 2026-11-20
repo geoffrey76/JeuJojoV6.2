@@ -45,3 +45,4 @@ npm --prefix jeuJojoReactFront test
 - Les 10 meilleurs scores sont stockés dans MongoDB (base `jeuJojo`, collection `tirSpatial`, créée automatiquement) et servis par `GET` / `POST /api/tirSpatial/scores`.
 - Musique : `src/sounds/dream-protocol-space-invaders-classic-arcade-game-116826.mp3` (Dream-Protocol, Pixabay), mentionnée dans le pied de page de la page du jeu. Boutons « Musique » et « Tirs » sous le jeu, touche `M` pour la musique ; le choix est mémorisé sur l'appareil.
 - Le bruit de tir est fabriqué par le code (`src/game/sound.js`, Web Audio) : aucun fichier, donc libre de droits.
+# JeuJojoV6.2
