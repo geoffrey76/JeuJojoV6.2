@@ -1,0 +1,189 @@
+/* Jeu de tir. Tout est limité à .tir pour ne pas affecter les autres pages. */
+.tir main{
+    display: flex;
+    justify-content: center;
+    padding: 70px 10px 50px 10px;
+}
+.tir .tirWrapper{
+    position: relative;
+    width: min(100%, 480px);
+    /* le canvas est au format 3:4 : on limite la largeur pour qu'il tienne dans la hauteur de l'écran */
+    width: min(100%, 480px, calc((100vh - 150px) * 0.75));
+    width: min(100%, 480px, calc((100dvh - 150px) * 0.75));
+}
+.tir .tirCanvas{
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 3px solid white;
+    border-radius: 6px;
+    background-color: #050a24;
+    touch-action: none; /* le doigt déplace le vaisseau au lieu de faire défiler la page */
+    user-select: none;
+    -webkit-user-select: none;
+}
+.tir .tirOverlay{
+    position: absolute;
+    inset: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px;
+    background-color: rgba(5, 10, 36, 0.82);
+    color: white;
+    text-align: center;
+    overflow-y: auto;
+}
+.tir .tirOverlay h1{
+    margin: 0 0 6px 0;
+    padding: 0;
+    font-size: 2em;
+}
+.tir .tirOverlay p{
+    margin: 4px 0;
+    font-size: 1.05em;
+}
+.tir .tirOverlay p.tirHelp{
+    font-size: 0.85em;
+    color: #cfd8ff;
+}
+.tir .tirOverlay p.tirScore{
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffeb3b;
+}
+.tir .tirOverlay p.tirRecord{
+    font-size: 1.3em;
+    color: #81c784;
+}
+.tir .tirOverlay button{
+    margin-top: 10px;
+    padding: 10px 32px;
+    font-size: 1.6em;
+    background-color: crimson;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+.tir .tirOverlay button:hover{
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+/* Boutons secondaires, formulaire du pseudo et classement */
+.tir .tirOverlay button.tirSecondary{
+    font-size: 1.1em;
+    padding: 6px 20px;
+    background-color: transparent;
+}
+.tir .tirOverlay h2{
+    margin: 10px 0 2px 0;
+    padding: 0;
+    font-size: 1.2em;
+}
+.tir .tirPseudoForm{
+    margin-top: 8px;
+}
+.tir .tirPseudoForm label{
+    display: block;
+    margin-bottom: 4px;
+    color: #81c784;
+}
+.tir .tirPseudoForm input{
+    width: 150px;
+    padding: 6px;
+    font-size: 1em;
+}
+.tir .tirPseudoForm button{
+    margin: 0 0 0 6px;
+    padding: 6px 14px;
+    font-size: 1em;
+}
+.tir .tirTop{
+    list-style: none;
+    margin: 4px 0;
+    padding: 0;
+    width: min(100%, 300px);
+    counter-reset: rank;
+    text-align: left;
+}
+.tir .tirTop li{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 2px 8px;
+    font-size: 0.95em;
+    counter-increment: rank;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.tir .tirTop li::before{
+    content: counter(rank) ".";
+    min-width: 1.8em;
+    color: #cfd8ff;
+}
+.tir .tirTopName{
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tir .tirTopScore{
+    font-weight: bold;
+    color: #ffeb3b;
+}
+.tir .tirTop li.tirTopMine{
+    background-color: rgba(129, 199, 132, 0.3);
+    border-radius: 4px;
+}
+/* Commandes musique / bruitage sous la zone de jeu */
+.tir .tirSound{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+.tir .tirSound button{
+    padding: 6px 12px;
+    font-size: 0.9em;
+    color: white;
+    background-color: rgba(5, 10, 36, 0.85);
+    border: 2px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.tir .tirSound button:hover{
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+/* Mention de la musique : le pied de page peut passer sur deux lignes */
+.tir footer{
+    height: auto;
+    min-height: 40px;
+    padding: 3px 8px;
+    box-sizing: border-box;
+}
+.tir footer p{
+    margin: 2px 0;
+}
+.tir footer a{
+    color: white;
+    text-decoration: underline;
+}
+.tir main{
+    padding-bottom: 90px;
+}
+@media screen and (max-width: 650px){
+    .tir main{
+        padding: 65px 6px 45px 6px;
+    }
+    .tir .tirOverlay h1{
+        font-size: 1.6em;
+    }
+    .tir .tirOverlay p{
+        font-size: 0.95em;
+    }
+    .tir .tirOverlay p.tirHelp{
+        font-size: 0.8em;
+    }
+}

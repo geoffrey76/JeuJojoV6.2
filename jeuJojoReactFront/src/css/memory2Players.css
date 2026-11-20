@@ -1,0 +1,132 @@
+/* Memory 2 joueurs. Tout est limité à #mainPartMemory2. */
+#mainPartMemory2{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, rgba(220, 20, 60, 1), rgba(220, 20, 60, 0));
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    min-width: 350px;
+}
+/*----------------------------------------------- Côté gauche (joueur A) ----------------------------*/
+#mainPartMemory2 #asideLeft{
+    padding: 65px 0px 45px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+#mainPartMemory2 .player{
+    color: crimson;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#mainPartMemory2 #playerA{
+    color: white;
+    writing-mode: vertical-rl;
+}
+/* Le joueur dont c'est le tour clignote */
+#mainPartMemory2 .player.active{
+    animation: playerBlink 1s linear infinite;
+}
+@keyframes playerBlink{
+    0%, 49%{ opacity: 1; }
+    50%, 99%{ opacity: 0; }
+    100%{ opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce){
+    #mainPartMemory2 .player.active{
+        animation: none;
+        text-decoration: underline;
+    }
+}
+#mainPartMemory2 #wonCardsAGrid,
+#mainPartMemory2 #wonCardsBGrid{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+#mainPartMemory2 .wonCardsASmall,
+#mainPartMemory2 .wonCardsBSmall{
+    border: solid black 2px;
+    width: 100%;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+}
+#mainPartMemory2 .wonCardsASmall{
+    transform: rotate(90deg);
+}
+#mainPartMemory2 .wonCardsBSmall{
+    transform: rotate(-90deg);
+}
+/*---------------------------------------------- Partie centrale -----------------------------*/
+#mainPartMemory2 .memoryGrid{
+    box-sizing: border-box;
+    margin: auto;
+    padding: 65px 0px 45px 0px;
+    height: 100%;
+    min-height: 100px;
+    max-height: 1080px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 1920px;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 10px;
+    position: relative;
+}
+#mainPartMemory2 .memoryGrid.victory{
+    font-size: 4em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    color: crimson;
+}
+#mainPartMemory2 #restartButton{
+    font-size: 3rem;
+    width: 100%;
+    margin: auto;
+    background-color: crimson;
+    color: white;
+    height: 60px;
+}
+#mainPartMemory2 #restartButton:hover{
+    cursor: pointer;
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+/*--------------------------------------- Côté droit (joueur B) ---------------------------------------*/
+#mainPartMemory2 #asideRight{
+    padding: 65px 0px 45px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+#mainPartMemory2 #playerB{
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+@media screen and (max-width: 650px){
+    #mainPartMemory2 .memoryGrid{
+        gap: 5px;
+    }
+    #mainPartMemory2 .memoryGrid.victory{
+        font-size: 2em;
+    }
+    #mainPartMemory2 #restartButton{
+        font-size: 1rem;
+    }
+}

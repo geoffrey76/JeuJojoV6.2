@@ -1,0 +1,15 @@
+{
+  "name": "jeujojo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Les jeux de JoJo : front React (Vite) + API Express servis par un seul service",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "build": "npm --prefix jeuJojoReactFront install --include=dev && npm --prefix jeuJojoReactFront run build && npm --prefix jeuJojoReactBack install",
+    "start": "node jeuJojoReactBack/index.js",
+    "dev:front": "npm --prefix jeuJojoReactFront run dev",
+    "dev:back": "npm --prefix jeuJojoReactBack run dev"
+  }
+}

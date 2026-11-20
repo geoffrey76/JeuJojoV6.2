@@ -1,0 +1,80 @@
+/* Memory 1 joueur. Tout est limité à .memory1 pour ne pas affecter les autres pages. */
+.memory1 #centerPart{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+.memory1 aside{
+    padding: 65px 0px 45px 0px;
+    color: white;
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-right: 5px;
+}
+.memory1 aside p{
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.memory1 #bestScoreName{
+    word-break: break-all;
+}
+.memory1 #attempsNumber{
+    font-size: 3em;
+}
+.memory1 .memoryGrid{
+    box-sizing: border-box;
+    margin: auto;
+    padding: 65px 20px 45px 20px;
+    height: 100%;
+    min-height: 100px;
+    max-height: 1080px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 1920px;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 10px;
+    position: relative; /* nécessaire à l'animation de mélange */
+}
+.memory1 #victory{
+    color: white;
+    font-size: 1.3em;
+    padding: 65px 20px 45px 20px;
+}
+.memory1 #bestScoreChange label{
+    display: block;
+    margin-bottom: 10px;
+}
+.memory1 #restartButtonMemory1{
+    font-size: 3rem;
+    width: 100%;
+    margin: auto;
+    background-color: crimson;
+    color: white;
+    height: 60px;
+}
+.memory1 #restartButtonMemory1:hover{
+    cursor: pointer;
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+@media screen and (max-width: 650px){
+    .memory1 #centerPart{
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+    }
+    .memory1 .memoryGrid{
+        padding: 0px 10px 45px 10px;
+        height: 80%;
+        gap: 5px;
+    }
+    .memory1 aside{
+        padding: 65px 10px 0px 10px;
+        font-size: 1em;
+    }
+}
