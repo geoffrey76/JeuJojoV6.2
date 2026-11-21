@@ -14,7 +14,9 @@ const ColorBall = lazy(() => import('./pages/ColorBall'));
 const Memory = lazy(() => import('./pages/Memory'));
 const Memory1Player = lazy(() => import('./pages/Memory1Player'));
 const Memory2PlayersReact = lazy(() => import('./pages/Memory2PlayersReact'));
+const Puissance4Menu = lazy(() => import('./pages/Puissance4Menu'));
 const Puissance4 = lazy(() => import('./pages/Puissance4'));
+const Puissance4Solo = lazy(() => import('./pages/Puissance4Solo'));
 const TirSpatial = lazy(() => import('./pages/TirSpatial'));
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
           <Route path="/memory" element={<Memory />} />
           <Route path="/memory1Player" element={<Memory1Player />} />
           <Route path="/memory2Players" element={<Memory2PlayersReact />} />
-          <Route path="/4aLaSuite" element={<Puissance4 />} />
+          <Route path="/4aLaSuite" element={<Puissance4Menu />} />
+          <Route path="/4aLaSuite1Player" element={<Puissance4Solo />} />
+          <Route path="/4aLaSuite2Players" element={<Puissance4 />} />
           <Route path="/tirSpatial" element={<TirSpatial />} />
         </Routes>
       </Suspense>

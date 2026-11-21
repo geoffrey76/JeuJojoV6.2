@@ -1,6 +1,6 @@
 # Les jeux de JoJo
 
-Petit site de jeux : nombre à deviner, pendu, balles de couleurs, memory (1 ou 2 joueurs), 4 à la suite et tir spatial.
+Petit site de jeux : nombre à deviner, pendu, balles de couleurs, memory (1 ou 2 joueurs), 4 à la suite (2 joueurs ou contre l'ordinateur) et tir spatial.
 
 - `jeuJojoReactFront` : site React, construit avec Vite
 - `jeuJojoReactBack` : API Express (meilleur score du Memory et top 10 du Tir spatial dans MongoDB, formulaire de contact via Resend). Il sert aussi le site compilé : un seul service suffit.
@@ -34,7 +34,7 @@ Depuis le 26 septembre 2025, Render bloque le SMTP (ports 25, 465, 587) sur les 
 
 ## Tests
 
-Les règles du Memory (`memoryLogic.js`) et du tir spatial (`shooterLogic.js`) sont dans `jeuJojoReactFront/src/game/`, sans React, et testées avec :
+Les règles du Memory (`memoryLogic.js`), du tir spatial (`shooterLogic.js`) et du 4 à la suite avec son adversaire ordinateur (`connect4Logic.js`) sont dans `jeuJojoReactFront/src/game/`, sans React, et testées avec :
 
 ```bash
 npm --prefix jeuJojoReactFront test
@@ -45,4 +45,9 @@ npm --prefix jeuJojoReactFront test
 - Les 10 meilleurs scores sont stockés dans MongoDB (base `jeuJojo`, collection `tirSpatial`, créée automatiquement) et servis par `GET` / `POST /api/tirSpatial/scores`.
 - Musique : `src/sounds/dream-protocol-space-invaders-classic-arcade-game-116826.mp3` (Dream-Protocol, Pixabay), mentionnée dans le pied de page de la page du jeu. Boutons « Musique » et « Tirs » sous le jeu, touche `M` pour la musique ; le choix est mémorisé sur l'appareil.
 - Le bruit de tir est fabriqué par le code (`src/game/sound.js`, Web Audio) : aucun fichier, donc libre de droits.
-# JeuJojoV6.2
+
+## 4 à la suite contre l'ordinateur
+
+- `/4aLaSuite` : menu (contre l'ordinateur ou 2 joueurs) ; `/4aLaSuite1Player` : partie contre l'ordinateur ; `/4aLaSuite2Players` : le jeu à deux joueurs d'origine.
+- L'ordinateur (`src/game/connect4Logic.js`) utilise un minimax avec élagage alpha-bêta, entièrement dans le navigateur : pas de serveur, pas de bibliothèque, quelques Ko de mémoire.
+- Niveaux, réglables dans `LEVEL_SETTINGS` : facile (hasard, gagne s'il le peut, bloque 6 fois sur 10), moyen (4 coups d'avance, 15 % de coups au hasard), difficile (7 coups d'avance, sans faute volontaire).

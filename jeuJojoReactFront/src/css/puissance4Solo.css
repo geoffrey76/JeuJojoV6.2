@@ -1,0 +1,167 @@
+/* 4 à la suite contre l'ordinateur. Tout est limité à .p4solo pour ne pas affecter les autres pages. */
+.p4solo main{
+    padding: 70px 10px 60px 10px;
+    text-align: center;
+    --cell: min(40px, calc((100vw - 90px) / 7)); /* la taille des jetons s'adapte aux petits écrans */
+    --gap: 9px;
+}
+.p4solo main h1{
+    font-size: 1.7em;
+}
+.p4solo main p{
+    margin: 8px 0;
+}
+
+/* ---- Écran de départ ---- */
+.p4solo .p4Choice{
+    max-width: 420px;
+    margin: 16px auto;
+    padding: 10px 14px 14px 14px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    color: white;
+}
+.p4solo .p4Choice legend{
+    padding: 0 8px;
+    font-size: 1.1em;
+}
+.p4solo .p4Choice button{
+    margin: 4px;
+    padding: 8px 16px;
+    font-size: 1.1em;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid white;
+    border-radius: 6px;
+}
+.p4solo .p4Choice button.p4Chosen{
+    background-color: crimson;
+    font-weight: bold;
+}
+.p4solo .p4Choice button:hover{
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+.p4solo .p4Choice p.p4Hint{
+    margin: 6px 0 0 0;
+    font-size: 0.85em;
+    color: #ffe3e3;
+}
+
+/* ---- Plateau ---- */
+.p4solo .p4Status{
+    min-height: 1.6em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.p4solo .p4Board{
+    display: flex;
+    gap: var(--gap);
+    width: fit-content;
+    margin: 12px auto;
+    padding: var(--gap);
+    background-color: blue;
+    border-radius: 8px;
+}
+.p4solo .p4Col{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+.p4solo .p4Col:disabled{
+    cursor: default; /* même aspect pendant le tour de l'ordinateur */
+}
+.p4solo .p4Col:not(:disabled):hover .p4Cell:not(.p4Red):not(.p4Yellow){
+    background-color: #ffd6d6; /* la colonne visée s'éclaire */
+}
+.p4solo .p4Cell{
+    display: block;
+    width: var(--cell);
+    height: var(--cell);
+    border-radius: 50%;
+    background-color: white;
+}
+.p4solo .p4Red{
+    background-color: red;
+}
+.p4solo .p4Yellow{
+    background-color: yellow;
+}
+.p4solo .p4Drop{
+    animation: p4drop 0.35s ease-in;
+}
+@keyframes p4drop{
+    from{
+        transform: translateY(calc(var(--fall) * -1 * (var(--cell) + var(--gap))));
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+.p4solo .p4Win{
+    box-shadow: 0 0 0 4px white, 0 0 14px 6px white;
+    animation: p4pulse 0.9s ease-in-out infinite alternate;
+}
+@keyframes p4pulse{
+    from{ filter: brightness(1); }
+    to{ filter: brightness(1.35); }
+}
+@media (prefers-reduced-motion: reduce){
+    .p4solo .p4Drop,
+    .p4solo .p4Win{
+        animation: none;
+    }
+}
+
+/* ---- Boutons ---- */
+.p4solo .p4Info{
+    font-size: 0.95em;
+    color: #ffe3e3;
+}
+.p4solo .p4Actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+.p4solo .p4Main{
+    margin-top: 10px;
+    padding: 10px 36px;
+    font-size: 1.6em;
+    color: white;
+    background-color: crimson;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+.p4solo .p4Actions .p4Main{
+    margin-top: 0;
+}
+.p4solo .p4Second{
+    padding: 6px 18px;
+    font-size: 1em;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+.p4solo .p4Main:hover,
+.p4solo .p4Second:hover{
+    color: black;
+    background-color: rgb(255, 182, 182);
+}
+
+@media screen and (min-width: 800px){
+    .p4solo main{
+        padding: 90px 20px 60px 20px;
+        --cell: 60px;
+    }
+    .p4solo main h1{
+        font-size: 2.6em;
+    }
+}
